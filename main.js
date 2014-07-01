@@ -1,26 +1,27 @@
+
 $(document).on('ready', function() {
   
-  new GMaps({
+  var boulder = new GMaps({
   div: '#map',
   lat: 40.017347,
   lng: -105.258860,
   zoom: 12
 });
 
-	 var numberOfXs = 0;
+	var numberOfXs = 0;
+	
 	$('#map').on('click',function(event){
-
 		// add little icon 'x-marks the spot'
 		// this should have position:absolute, at x = event.pageX, y= event.pageY
 
 		var x = 100*event.pageX/$(document).width();
 		var y = 100*event.pageY/$(document).height();
-		$(this).append("<img src='x-icon.png' class='x-icon' id="+numberOfXs+">");
+		$('#map').append("<img src='x-icon.png' class='x-icon' id="+numberOfXs+">");
 		$('#'+numberOfXs).css({ 'top':y+'%','left':x+'%' });
 		$('#'+numberOfXs).css({ 'margin-top':-10,'margin-left':-10 });
 
 		// Pop up a textarea
-		$(this).append("<textarea class='popup-note' id='pop"+numberOfXs+"' placeholder='Enter info about the gold' autofocus></textarea>");
+		$('#map').append("<textarea class='popup-note' id='pop"+numberOfXs+"' placeholder='Enter info about the gold' autofocus></textarea>");
 		$('#pop'+numberOfXs).css({ 'top':y+'%','left':x+'%'  });
 		$('#pop'+numberOfXs).css({ 'margin-top':+10,'margin-left':+10 });
 
